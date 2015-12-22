@@ -1,4 +1,4 @@
-nginx:
+web:
   build: ./setup/nginx
   volumes:
     - ./setup/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -7,9 +7,9 @@ nginx:
   ports:
     - '80:80'
   links:
-    - web
+    - app
 
-web:
+app:
   build: .
   command: pm2 start web.json5 --no-daemon
   volumes:
