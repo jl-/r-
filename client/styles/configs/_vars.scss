@@ -1,0 +1,186 @@
+// Valibale defination
+// format should follow the `$component_property--modifier` order.
+
+// Table of ontents
+//
+// Colors
+// Options
+// Spacing
+// Body
+// Links
+// Grid breakpoints
+// Grid containers
+// Grid columns
+// Fonts
+// Components
+// Application config
+// theme
+
+
+
+////////////////////// Colors
+$grey--dark:                                #373a3c !default;
+$grey:                                      #55595c !default;
+$grey--light:                               #818a91 !default;
+$grey--lighter:                             #eceeef !default;
+$grey--lightest:                            #f7f7f9 !default;
+$grey--pale:                                #a4b3cd !default;
+
+$cyan--dark:                                #1abc9c !default;
+
+$blue--dark:                                #152335 !default;
+$blue--strong:                              #1976d0 !default;
+$blue--moderate:                            #5147b8 !default;
+$blue--pale:                                #e2eeff !default;
+
+$pink--moderate:                            #534c9c !default;
+$pink--dark:                                #372564 !default;
+
+
+
+$brand--primary:                            #0275d8 !default;
+$brand--success:                            #5cb85c !default;
+$brand--info:                               #5bc0de !default;
+$brand--warning:                            #f0ad4e !default;
+$brand--danger:                             #d9534f !default;
+
+// material
+$material-red:                              #F44336 !default;
+$material-pink:                             #E91E63 !default;
+$material-purple:                           #9C27B0 !default;
+$material-purple--deep:                     #673AB7 !default;
+$material-indigo:                           #3F51B5 !default;
+$material-blue:                             #2196F3 !default;
+$material-blue--light:                      #03A9F4 !default;
+$material-cyan:                             #00BCD4 !default;
+$material-teal:                             #009688 !default;
+$material-green:                            #4CAF50 !default;
+$material-green--light:                     #8BC34A !default;
+$material-lime:                             #CDDC39 !default;
+$material-yellow:                           #FFEB3B !default;
+$material-amber:                            #FFC107 !default;
+$material-orange:                           #FF9800 !default;
+$material-orange--deep:                     #FF5722 !default;
+$material-brown:                            #795548 !default;
+$material-grey:                             #9E9E9E !default;
+$material-grey--blue:                       #607D8B !default;
+
+
+
+
+
+//////////////////// common base.
+$font-size:                                 1rem !default;
+$font-size--lg:                             1.25rem !default;
+$font-size--sm:                             .85rem !default;
+$font-size--xs:                             .75rem !default;
+
+$line-height:                               1.5 !default;
+$line-height--lg:                           (4/3) !default;
+$line-height--sm:                           1.5 !default;
+
+$border-radius:                             .25rem !default;
+$border-radius--lg:                         .3rem !default;
+$border-radius--sm:                         .2rem !default;
+$border_width:                              .0625rem !default;
+
+
+//////////////////// Spacing
+$spacer:                                    1rem !default;
+$spacer_x:                                  $spacer !default;
+$spacer_y:                                  $spacer !default;
+
+$spacer-breakpoints_x: (
+  0:    0,
+  xs:   $spacer_x * 0.25,
+  sm:   $spacer_x * 0.5,
+  md:   $spacer_x * 1,
+  lg:   $spacer_x * 1.5,
+  xl:   $spacer_x * 3,
+  o:    auto
+) !default;
+$spacer-breakpoints_y: (
+  0:    0,
+  xs:   $spacer_y * 0.25,
+  sm:   $spacer_y * 0.5,
+  md:   $spacer_y * 1,
+  lg:   $spacer_y * 1.5,
+  xl:   $spacer_y * 3,
+  o:    auto
+) !default;
+
+
+////////////////////// Grid
+$grid-columns:                              12 !default;
+$grid-gutter-width:                         1.875rem !default; // 30px
+$grid-breakpoints: (
+  xs: 0,
+  sm: 34em,
+  md: 48em,
+  lg: 62em,
+  xl: 75em
+) !default;
+
+
+
+// buttons
+$btn_color--primary:                        #fff !default;
+$btn_bgc--primary:                          $brand--primary !default;
+$btn_border-color--primary:                 $btn_bgc--primary !default;
+
+$btn_color--success:                        #fff !default;
+$btn_bgc--success:                          $brand--success !default;
+$btn_border-color--success:                 $btn_bgc--success !default;
+
+$btn_padding:                               .375rem 1rem !default;
+$btn_font-size:                             $font-size !default;
+$btn_line-height:                           $line-height !default;
+$btn_border-radius:                         $border-radius !default;
+
+$btn_padding--lg:                           .75rem 1.25rem !default;
+$btn_font-size--lg:                         $font-size--lg !default;
+$btn_line-height--lg:                       $line-height--lg !default;
+$btn_border-radius--lg:                     $border-radius--lg !default;
+
+$btn_padding--sm:                           .25rem 1rem !default;
+$btn_font-size--sm:                         $font-size--sm !default;
+$btn_line-height--sm:                       $line-height--sm !default;
+$btn_border-radius--sm:                     $border-radius--sm !default;
+
+
+
+$checked:                                         "✓" !default;
+$cross-icon:                                      "⤬" !default;
+$ROOT:                                            "" !default;
+
+
+/////////////////// theme tpl
+$theme:                                     night !default;
+// global
+$link_color:                                $brand--primary !default;
+$link_color--hovered:                       darken($link_color, 15%) !default;
+$link_decoration--hovered:                  underline !default;
+
+// app related
+$body_bgc:                                  $blue--dark !default;
+$body_color:                                $grey--pale !default;
+
+$action-bar_bgc:                            $blue--dark !default;
+$action-bar_color:                          $grey--pale !default;
+
+///// night
+@if ($theme == night) {
+  // global
+  $link_color:                                $grey--pale;
+  $link_color--hovered:                       lighten($link_color, 15%);
+  $link_decoration--hovered:                  underline;
+
+  // buttons
+
+  // app related
+  $body_bgc:                                  $blue--dark;
+  $body_color:                                $grey--pale;
+
+  $action-bar_bgc:                            $blue--dark;
+  $action-bar_color:                          $grey--pale;
+}

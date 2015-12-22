@@ -1,0 +1,36 @@
+upstream web-server {
+  least_conn;
+  server web:9876 weight=100 max_fails=3 fail_timeout=30s;
+}
+
+map $cookie_lang $lang {
+  default 'zh';
+  '~*^[a-zA-Z_]{1,20}$' $cookie_lang;
+}
+
+server {
+  listen 80;
+  server_name  localhost;
+
+  charset utf-8;
+
+  access_log  /var/log/nginx/web-server.access.log;
+  error_log   /var/log/nginx/web-server.error.log;
+
+
+  location ^~ /statics/ {
+    root  /var/web/statics/;
+  }
+  location ~* \.(js|css|html) {
+    root  /var/web/statics/$lang/;
+  }
+
+  location / {
+    proxy_pass http://web-server;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}

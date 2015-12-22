@@ -1,0 +1,6 @@
+{
+  "name": "SiteHeader",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./site-header.js"
+}

@@ -1,0 +1,126 @@
+@import 'styles/configs';
+$base: paper-input;
+$dura: 0.25s;
+$color--normal: $brand--primary;
+$color--normal: currentColor;
+$color--valid: $brand--success;
+$color--invalid: $brand--danger;
+@mixin size-variant($factor) {
+  $variant-row: input#{&};
+  %#{$variant-row} {
+    font-size: $factor * 1em;
+    line-height: 1.6;
+    height: 1.6em;
+    padding-left: 0.4em;
+  }
+  & {
+    padding-top: $factor * 1.2em;
+    .#{$base} {
+      &-field {
+        @extend %#{$variant-row};
+      }
+      &-label {
+        font-size: $factor * 0.82em;
+        line-height: 1;
+        height: 1em;
+        transform: translate(0,-100%);
+      }
+      &-field {
+      }
+      &-info {
+      }
+    }
+  }
+  &.#{$base}--pristine,
+  &.#{$base}--blank {
+    .#{$base} {
+      &-label {
+        @extend %#{$variant-row};
+        transform: translate(0,0);
+      }
+    }
+  }
+}
+
+.#{$base} {
+  position: relative;
+  color: $color--normal;
+  &-label {
+    display: inline-block;
+    position: absolute;
+    transition-property: transform, font-size, height, line-height, padding-left;
+    transition-duration: $dura;
+    transition-timing-function: ease-in-out;
+    pointer-events: none;
+    font-weight: bolder;
+  }
+  &-field {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid;
+  }
+  &-underline {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    margin-top: -2px;
+    height: 2px;
+    background-color: $color--normal;
+    transition: left $dura ease-in-out, right $dura ease-in-out;
+  }
+  &-info {
+    display: inline-block;
+    font-size: 0.8em;
+    visibility: hidden;
+  }
+
+  &--invalid,
+  &--focused {
+    .#{$base} {
+      &-info {
+        visibility: visible;
+      }
+    }
+  }
+  &--valid {
+    .#{$base} {
+      &-info {
+        visibility: hidden;
+      }
+    }
+  }
+  &--focused {
+    .#{$base}-underline {
+      left: 0;
+      right: 0;
+    }
+  }
+  &--dirty {
+  }
+  &--pending {
+  }
+  &--valid {
+    color: $color--valid;
+    .#{$base}-underline {
+      background-color: $color--valid;
+    }
+  }
+  &--invalid {
+    color: $color--invalid;
+    .#{$base}-underline {
+      background-color: $color--invalid;
+    }
+  }
+  @include size-variant(1.075);
+  &--sm {
+    @include size-variant(0.92);
+  }
+  &--lg {
+    @include size-variant(1.2);
+  }
+}
+

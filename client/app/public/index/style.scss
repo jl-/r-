@@ -1,0 +1,193 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/utils';
+$dura: 1.2s !default;
+$easing: $ease-in-out-back !default;
+$fill: forwards !default;
+$delay: 0.2s !default;
+.page {
+  @include size(100%);
+}
+.portal {
+  compose-with: page;
+  background-color: $body_bgc;
+  color: white;
+}
+.logo {
+  compose-with: global(fa) global(fa-github-alt);
+  &Large {
+    compose-with: global(fa-4x);
+    margin-top: -4em;
+  }
+}
+
+
+.navBar {
+  $base: &;
+  compose-with: global(text--center)  global(fixed) global(fiexed--left) global(p-y--md) global(p-x--lg);
+  background-color: transparentize($brand--primary,0.3);
+  width: 100%;
+  z-index: 10;
+  color: white;
+  &Top {
+    compose-with: global(fixed--top);
+    bottom: auto;
+    background-color: transparent;
+    #{$base}AuthBtn {
+      @include button-variant(#fff, transparent, #fff);
+    }
+  }
+  &Bottom {
+    compose-with: global(fixed--bottom);
+    top: auto;
+    #{$base}AuthBtn {
+      @include button-variant(#fff, transparent, #fff);
+    }
+  }
+  &BottomUp {
+    $easing: ease;
+    compose-with: navBarBottom;
+    :global {
+      animation: down-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+  }
+  &BottomDown {
+    compose-with: navBarBottom;
+    :global {
+      animation: down $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+  &TopUp {
+    compose-with: navBarTop;
+    :global {
+      animation: up $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+  &TopDown {
+    compose-with: navBarTop;
+    :global {
+      animation: up-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+  }
+  &WithoutAuth {
+    #{$base}Auth {
+      :global {
+        $dura: 0.2s;
+        $easing: ease-in;
+        animation: right $dura $easing $fill, fade-out $dura $easing $fill;
+      }
+    }
+  }
+  &What {
+    compose-with: global(cursor--pointer);
+  }
+  &Auth {
+    compose-with: global(abs) global(abs--right) global(abs--yc) global(frow) global(f-ai-c) global(p-x--lg) global(m-y--lg);
+    :global {
+      $easing: $ease-in-out-sine;
+      animation: right-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+    &Btn {
+      compose-with: global(btn) global(btn--sm) global(btn--primary-outline) global(m-l--md);
+    }
+  }
+}
+
+/////////////// preface
+.preface {
+  $base: &;
+  $dura: 0.4s;
+  $delay: 0s;
+  $easing: ease-in-out;
+  compose-with: global(frow) global(f-ai-s);
+  color: #eee;
+  &Bg {
+  }
+  &:global(.slide--current), &:global(.slide--prev-leaving), &:global(.slide--current-entering) {
+    #{$base} {
+      &Left {
+        :global {
+          animation: left-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+        }
+      }
+      &Right {
+        :global {
+          $dura: 1.2s;
+          $delay: 0s;
+          $easing: $ease-in-out-back;
+          animation: right-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+        }
+      }
+    }
+  }
+  &Left, &Right {
+    compose-with: global(fcol) global(f-ai-c) global(f-jc-c) global(rel);
+    opacity: 0;
+  }
+  &Left {
+    flex: 5;
+    background: $brand--primary url(/statics/images/bg-pattern.png) repeat;
+    background: $brand--primary;
+  }
+  &Right {
+    flex: 6;
+    background-color: rgba(0,0,0,0.2);
+  }
+  &App {
+    &Name {
+      margin-top: -2em;
+      width: 60%;
+      font-size: 3em;
+      compose-with: global(f-as-s) global(p-b--md) global(text--center) global(m-x--o) global(m-y--sm);
+      border-bottom: 3px solid $brand--primary;
+    }
+    &Slogan {
+      compose-with: global(m-y--sm) global(text--center);
+      font-size: 2em;
+    }
+  }
+  &Right {
+    &Bg {
+      compose-with: global(abs) global(abs--left) global(abs--top) global(abs--bottom) global(left);
+      right: -100%;
+      z-index: -1;
+      //background: url(/statics/images/people.jpg) repeat center;
+      background-size: 50% 100%;
+    }
+    &Join {
+      compose-with: global(btn) global(btn--primary) global(m-t--xl);
+      width: 40%;
+    }
+  }
+  &ToNext {
+    compose-with: global(abs) global(abs--bottom) global(abs--xc) global(cursor--pointer) global(fa) global(fa-angle-double-down);
+    @include size(2em);
+    font-size: 2em;
+  }
+}
+
+//////////////// places
+.places {
+  background-color: $brand--primary;
+}
+
+////////////// events
+.events {
+  background-color: $blue--moderate;
+}
+
+/////////// join
+.join {
+  $base: &;
+  compose-with: global(frow) global(f-jc-c) global(f-ai-c) global(p-y--lg);
+  @include color-variant($body_color, $body_bgc);
+  &Auth {
+    @include size(100%);
+  }
+}
+
+
+@keyframes :global(roll-bg) {
+  0% { background-position: 0 center; }
+  100% { background-position: -655px center; }
+}

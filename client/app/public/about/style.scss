@@ -1,0 +1,372 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/utils';
+$dura: 1.2s !default;
+$easing: $ease-in-out-back !default;
+$fill: forwards !default;
+$delay: 0.2s !default;
+.page {
+  @include size(100%);
+}
+.about {
+  compose-with: page;
+  background-color: $body_bgc;
+  color: white;
+}
+.logo {
+  compose-with: global(dib);
+  background-image: url(/statics/images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include size(2rem);
+  vertical-align: middle;
+  &Md {
+    @include size(4rem);
+  }
+  &Large {
+    @include size(6rem);
+  }
+}
+
+
+
+.navBar {
+  $base: &;
+  compose-with: global(text--center)  global(fixed) global(fiexed--left) global(p-y--md) global(p-x--lg);
+  background-color: transparentize($brand--primary,0.3);
+  width: 100%;
+  z-index: 10;
+  color: white;
+  &Top {
+    compose-with: global(fixed--top);
+    bottom: auto;
+    background-color: transparent;
+    #{$base}AuthBtn {
+      @include button-variant(#fff, transparent, #fff);
+    }
+  }
+  &Bottom {
+    compose-with: global(fixed--bottom);
+    top: auto;
+  }
+  &BottomUp {
+    $easing: ease;
+    compose-with: navBarBottom;
+    :global {
+      animation: down-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+  }
+  &BottomDown {
+    compose-with: navBarBottom;
+    :global {
+      animation: down $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+  &TopUp {
+    compose-with: navBarTop;
+    :global {
+      animation: up $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+  &TopDown {
+    compose-with: navBarTop;
+    :global {
+      animation: up-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+  }
+  &Bare {
+    background-color: transparent;
+  }
+  &WithoutAuth {
+      :global {
+        $dura: 0.2s;
+        $easing: ease-in;
+        animation: right $dura $easing $fill, fade-out $dura $easing $fill;
+      }
+  }
+  &What {
+    compose-with: global(cursor--pointer);
+  }
+  &Auth {
+    compose-with: global(abs) global(abs--right) global(abs--yc) global(frow) global(f-ai-c) global(p-x--lg) global(m-y--lg);
+    :global {
+      $easing: $ease-out-sine;
+      animation: right-reverse $dura $easing $fill, fade-in $dura $easing $fill;
+    }
+    &Btn {
+      compose-with: global(btn) global(btn--sm) global(btn--primary-outline) global(m-l--md);
+    }
+  }
+}
+
+/////////////// preface
+.preface {
+  $base: &;
+  compose-with: global(frow) global(f-ai-s);
+  @include color-variant(#eee, rgba(0,0,0,0.2))
+  &:global(.slide--current), &:global(.slide--prev-leaving), &:global(.slide--current-entering) {
+    #{$base} {
+      &Left {
+        :global {
+          $dura: 0.8s;
+          $delay: 0s;
+          $easing: $ease-out-quint;
+          animation: left-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+        }
+      }
+    }
+  }
+  &Left, &Right {
+    compose-with: global(fcol) global(f-ai-c) global(f-jc-c) global(rel);
+  }
+  &Left {
+    flex: 6;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), $pink--dark);
+  }
+  &Right {
+    flex: 6;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), $pink--dark);
+    background: rgba(0,0,0,0.2);
+  }
+  &App {
+    &Name {
+      width: 60%;
+      font-size: 2.2em;
+      font-weight: lighter;
+      compose-with: global(f-as-s) global(p-b--md) global(text--center) global(m-x--o) global(m-y--sm);
+    }
+    &Slogan {
+      compose-with: global(m-y--sm) global(text--center);
+      font-weight: lighter;
+      font-size: 2em;
+    }
+  }
+  &Right {
+    &Bg {
+      compose-with: global(abs) global(abs--left) global(abs--right) global(abs--top) global(abs--bottom) global(left);
+      z-index: -1;
+      //background: url(/statics/images/people.jpg) repeat center;
+      background-size: 50% 100%;
+    }
+    &Join {
+      compose-with: global(btn) global(btn--primary) global(m-t--xl);
+      width: 40%;
+    }
+  }
+  &ToNext {
+    compose-with: global(abs) global(abs--bottom) global(abs--xc) global(cursor--pointer) global(fa) global(fa-angle-double-down);
+    @include size(2em);
+    font-size: 2em;
+  }
+}
+
+//////////////// places
+.courses {
+  $base: &;
+  compose-with: global(fcol) global(f-jc-c) global(f-ai-c) global(text--center);
+  background-color: $brand--primary;
+  background-image: linear-gradient(to bottom, $pink--dark, darken($pink--dark,12%));
+  color: white;
+  &Slogan {
+    transition: all 1.8s ease-out;
+    font-size: 2.4em;
+    font-weight: lighter;
+  }
+  &Intro {
+    transition: all 1s ease-out;
+  }
+
+  &Snapshot {
+    &Wrapper {
+      compose-with: global(frow) global(f-jc-sb);
+    }
+    @include size(220px);
+    compose-with: global(m-l--lg) global(cursor--pointer);
+    transition: all 1.4s ease-out;
+  }
+  &:global(.slide--current), &:global(.slide--current-entering) {
+    #{$base} {
+      &Slogan {
+        transform: translateY(-100px);
+      }
+      &Intro {
+        transform: translateY(-100px);
+      }
+      &Snapshot {
+
+      }
+    }
+  }
+}
+
+////////////// events
+.communities {
+  $base: &;
+  compose-with: global(frow) global(f-jc-sa) global(f-ai-c);
+  background-image: linear-gradient(to bottom, darken($pink--dark,12%), $pink--dark);
+  &Snapshot {
+    &Wrapper {
+    }
+    compose-with: global(db);
+    width: 360px;
+    transition: all 0.6s ease-out;
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  &Intro {
+  }
+  &:global(.slide--current), &:global(.slide--current-entering) {
+    #{$base} {
+      &Snapshot {
+        &:nth-child(1) {
+          //transform: rotateZ(20deg);
+          margin-top: 3em;
+        }
+        &:nth-child(2) {
+          margin-left: 2em;
+          margin-top: -2em;
+        }
+        &:nth-child(3) {
+          margin-left: 4em;
+          margin-top: 1em;
+        }
+      }
+    }
+  }
+}
+.experts {
+  background-image: linear-gradient(to bottom, $pink--dark, darken($pink--dark, 12%));
+}
+
+/////////// join
+.join {
+  $base: &;
+  compose-with: global(p-y--0) global(p-x--xl);
+  //background-image: linear-gradient(to bottom, darken($pink--dark, 12%), rgba(0,0,0,0.2) 26%);
+  background-color: rgba(0,0,0,0.1);
+  //background-color: darken($pink--dark, 12%);
+  &Slogan {
+    compose-with: global(m-r--md) global(p-l--md) global(abs) global(abs--left) global(abs--yc);
+    height: 4rem;
+  }
+  &Header {
+    compose-with: global(h--full) global(frow) global(f-ai-c) global(f-jc-c) global(rel);
+    @include size(100%, calc(24% - 4em));
+    background-image: linear-gradient(to right, $pink--moderate, $pink--moderate 33.3%, $pink--dark 33.3%, $pink--dark 66.6%, darken($pink--dark, 16%) 66.6%, darken($pink--dark, 16%));
+    background-size: 100% 4px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    margin-bottom: 4em;
+  }
+  &StepFlags {
+    compose-with: global(frow) global(f-jc-c) global(f-ai-fs);
+  }
+  &StepFlag{
+    compose-with: global(text--center) global(cursor--pointer);
+    $flag_width: 10em;
+    width: $flag_width;
+    &Icon {
+      $icon_width: 2em;
+      $icon_height: 2em;
+      compose-with: global(dib) global(text--center) global(rel);
+      @include size($icon_width, $icon_height);
+      @include color-variant($body_bgc, $body_color);
+      line-height: $icon_height;
+      border-radius: 50%;
+      &::after {
+        $icon-line_height: 0.2em;
+        content: "";
+        position: absolute;
+        top: ($icon_height - $icon-line_height) / 2;
+        left: 100%;
+        @include size($flag_width - $icon_width, $icon-line_height);
+        background-color: $body_color;
+      }
+    }
+    &Title {
+      font-weight: bolder;
+    }
+    &:last-child &Icon::after {
+      display: none;
+    }
+    &Activited &Icon{
+      &, &::after {
+        @include color-variant(white, $brand--primary);
+      }
+    }
+    &Activited &Title{
+      color: $brand--primary;
+    }
+  }
+  &StepDeck {
+    @include size(100%, 76%);
+  }
+  &RoleCards {
+    compose-with: global(frow) global(f-jc-c) global(h--full);
+  }
+  &RoleCard {
+    compose-with: global(p-x--sm) global(p-y--sm) global(cursor--pointer);
+    @include size(18em, 22em);
+    border-radius: 0.3em;
+    border: 1px solid;
+    transition: border-color $dura / 2, color $dura / 2;
+    &Selected {
+      @include color-variant(white, $brand--primary, lighten($brand--primary, 30%));
+    }
+  }
+  &RoleDescriptionItem {
+    compose-with: global(p-y--sm);
+    list-style: none;
+  }
+  &NextStep {
+    compose-with: global(btn) global(btn--default) global(btn--rounded) global(m-y--xl);
+    width: 10em;
+    cursor: not-allowed;
+    &Ok {
+      compose-with: global(btn--primary);
+      cursor: pointer;
+    }
+  }
+}
+
+.loginForm {
+  width: 60%;
+  color: $brand--primary;
+}
+.signupForm {
+  width: 68%;
+  max-width: 460px;
+}
+
+// Deck indicators
+$indicator-count: 5;
+$indicator_height: 0.8em;
+$indicator_width: 0.8em;
+$indicator_gap: 1em;
+.indicators {
+  $p-x: 0.5em;
+  $p-y: 0.5em;
+  compose-with: global(fixed) global(fixed--yc);
+  @include size($indicator_width + $p-x * 2, $indicator_height * $indicator-count + $p-y * 2 + $indicator_gap * ($indicator-count - 1));
+  z-index: 10;
+  right: 1em;
+  padding: $p-y $p-x;
+}
+.indicator {
+  compose-with: global(dib) global(cursor--pointer);
+  @include size($indicator_width, $indicator_height);
+  border-radius: $indicator_width / 2;
+  background-color: lighten($body_color, 20%);
+  & + & {
+    margin-top: $indicator_gap;
+  }
+}
+.currentIndicator {
+  background-color: $brand--primary;
+}
+
+
+@keyframes :global(roll-bg) {
+  0% { background-position: 0 center; }
+  100% { background-position: -655px center; }
+}

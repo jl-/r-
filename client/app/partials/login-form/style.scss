@@ -1,0 +1,14 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/utils/timing-functions';
+.form {
+  min-width: 320px;
+}
+.loginBtn {
+  @include flex-item(2);
+}
+.seperator {
+  compose-with: global(dib) global(m-l--lg) global(m-r--sm) global(f-as-s);
+  width: 1px;
+  background-color: lighten($body_bgc, 18%);
+}

@@ -1,0 +1,33 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+.tweet {
+  compose-with: global(p-x--sm) global(p-y--sm) global(text--left);
+  color: #666;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  & + & {
+    margin-top: 2em;
+  }
+}
+.metas {
+  compose-with: global(frow) global(f-ai-c) global(p-b--md);
+  border-bottom: 1px solid #eee;
+}
+.avatar {
+  @include size(3em);
+  compose-with: global(m-r--md);
+  border-radius: 50%;
+}
+.username {
+  color: black;
+  text-decoration: none;
+}
+.updatedAt {
+  compose-with: global(m-y--0);
+  font-size: 0.8em;
+}
+.content {
+  compose-with: global(m-t--md);
+}
+

@@ -1,0 +1,63 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/utils/timing-functions';
+$dura: 1s;
+$easing: ease-in-out;
+$fill: forwards;
+$delay: $dura + 0.2s;
+.auth {
+  &Btn {
+    @include flex-item(2);
+  }
+  &WithLogin {
+    .loginForm {
+      :global {
+        animation: z-in $dura $easing $delay $fill;
+      }
+    }
+    .signupForm {
+      :global {
+        animation: z-out $dura $easing $fill;
+      }
+    }
+  }
+  &WithSignup {
+    .loginForm {
+      :global {
+        animation: z-out $dura $easing $fill;
+      }
+    }
+    .signupForm {
+      :global {
+        animation: z-in $dura $easing $delay $fill;
+      }
+    }
+  }
+}
+.back {
+  compose-with: global(f-as-s) global(p-x--xl) global(fcol) global(f-jc-c) global(cursor--pointer);
+  background-color: darken($body_bgc, 2%);
+  transition: background-color 0.4s ease;
+  &:hover {
+    background-color: darken($body_bgc, 12%);
+  }
+}
+.col {
+  width: 60%;
+  max-width: 460px;
+}
+.loginForm {
+  compose-with: col;
+}
+.signupForm {
+  compose-with: col;
+}
+.rememberMe {
+  font-size: 0.8em;
+}
+.seperator {
+  compose-with: global(dib) global(m-l--lg) global(m-r--sm) global(f-as-s);
+  width: 1px;
+  background-color: lighten($body_bgc, 18%);
+}
+

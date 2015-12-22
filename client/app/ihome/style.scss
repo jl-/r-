@@ -1,0 +1,36 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+
+$nav-bar_height: 3em;
+
+body {
+  background-color: $body_bgc;
+  color: $body_color;
+}
+.appInner {
+  @include size(100%);
+}
+
+
+.navBar {
+  line-height: $nav-bar_height;
+  height: $nav-bar_height;
+  compose-with: global(frow) global(f-jc-sb);
+  background-color: $action-bar_bgc;
+  color: $action-bar_color;
+  border-bottom: 1px solid lighten($action-bar_bgc, 10%);
+}
+.navItems {
+  compose-with: global(frow);
+  flex-grow: 1;
+}
+.navItem {
+}
+.navItemActived {
+  color: white;
+}
+
+.body {
+  @include size(100%, calc(100% - #{$nav-bar_height}));
+  compose-with: global(p-t--md);
+}

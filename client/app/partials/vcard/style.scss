@@ -1,0 +1,30 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+.vcard {
+  compose-with: global(fcol) global(f-ai-c) global(p-x--sm) global(p-y--sm);
+  background-color: white;
+  border-radius: 4px;
+}
+.avatar {
+  @include size(6em);
+  compose-with: global(m-r--md);
+  border-radius: 50%;
+}
+.username {
+  compose-with: global(dib) global(p-y--md);
+  font-size: 1em;
+  color: #666;
+}
+.sections {
+  compose-with: global(frow) global(f-jc-sa);
+}
+.section {
+  & + & {
+    margin-left: 2.8em;
+  }
+  &Name {
+    compose-with: global(db);
+    font-size: 0.8em;
+  }
+}
+

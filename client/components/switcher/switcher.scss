@@ -1,0 +1,72 @@
+@import '../../styles/configs/_exports';
+/**
+ * .switcher.switcher--[on|off]
+ *  .switcher__on=ON
+ *  .switcher__btn
+ *  .switcher__off=OFF
+ *--------------------------
+ * default status: --on
+ */
+.switcher{
+  $base: #{&};
+  $lh: 26px;
+  $txw: 40px;
+  $btnw: 28px;
+  $btns: 20px;
+  $w: $txw + $btnw;
+  @extend .rel;
+  @extend .inline-block;
+  @extend .box--clip;
+  @extend .cursor--pointer;
+  font-size: 0;
+  line-height: $lh;
+  width: $w;
+  border-radius: #{$lh / 2};
+  box-shadow: 0 0 1px $powder-blue;
+  transition: background-color 0.3s ease;
+  &__on, &__off, &__btn {
+    line-height: $lh;
+    @extend .inline-block;
+  }
+  &__on, &__off {
+    @extend .plr;
+    width: $txw;
+    font-size: 14px;
+  }
+  &__on {
+    @extend .text--left;
+    transition: margin-left 0.2s ease;
+    @extend .text--white;
+  }
+  &__btn {
+    @include size($btnw $lh);
+    padding-top: #{($lh - $btns) / 2};
+    padding-left: #{($btnw - $btns) / 2};
+    &:before {
+      @include size($btns $btns);
+      content: "";
+      display: block;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: -1px 1px 1px #aaa;
+    }
+  }
+  &__off {
+    @extend .abs;
+    @extend .text--right;
+  }
+  background-color: $lovely-green;
+  &--on {
+  }
+  &--off {
+    background-color: #EBF8FA;
+    #{$base} {
+      &__on {
+        margin-left: -$txw;
+      }
+      &__btn:before {
+        box-shadow: 2px 1px 2px #aaa;
+      }
+    }
+  }
+}

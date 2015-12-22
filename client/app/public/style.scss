@@ -1,0 +1,20 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+body {
+  background-color: $body_bgc;
+  color: $body_color;
+}
+.appInner {
+  @include size(100%);
+}
+
+.navBar {
+  background-color: $action-bar_bgc;
+  color: $action-bar_color;
+  border-bottom: 1px solid lighten($action-bar_bgc, 10%);
+}
+.navItem {
+}
+.navItemActived {
+  color: white;
+}

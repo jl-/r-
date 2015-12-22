@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+bower_components/
+statics/libs/
+#dist/
+#dist/statics/libs/
+.settings/
+.idea/
+.DS_Store
+npm-debug.log
+!.gitignore

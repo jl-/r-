@@ -1,0 +1,22 @@
+{
+  "name": "xixi-homeschool-web",
+  "version": "0.0.0",
+  "authors": [
+    "jlz <jlz.cius@gmail.com>"
+  ],
+  "description": "xixi homeschool web",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha",
+    "bourbon": "~4.2.3",
+    "normalize.css": "~3.0.3",
+    "font-awesome": "fontawesome#~4.4.0"
+  }
+}

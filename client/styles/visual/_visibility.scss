@@ -1,0 +1,21 @@
+.x--auto{
+  overflow-x: auto;
+}
+.x--clip{
+  overflow-x: hidden;
+}
+.y--auto{
+  overflow-y: auto;
+}
+.y--clip{
+  overflow-y: hidden;
+}
+.transparent {
+  opacity: 0;
+}
+.gone {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}

@@ -1,0 +1,44 @@
+@import 'styles/configs';
+
+// display
+@each $selector, $val in (i: inline, b: block, ib: inline-block) {
+  .d#{$selector} {
+    display: $val;
+  }
+}
+
+@each $pos-short, $pos-val in (p: padding, m: margin) {
+  @each $breakpoints, $directions in
+    ($spacer-breakpoints_x, (l: left, r: right, x: x)),
+    ($spacer-breakpoints_y, (t: top, b: bottom, y: y)){
+      @each $direction-short, $direction-val in $directions {
+        @each $breakpoint-short, $breakpoint-val in $breakpoints {
+          @if $pos-short == m or $breakpoint-short != o{
+            .#{$pos-short}-#{$direction-short}--#{$breakpoint-short} {
+              @if $direction-short == x {
+                #{$pos-val}-left: $breakpoint-val;
+                #{$pos-val}-right: $breakpoint-val;
+              } @else if $direction-short == y {
+                #{$pos-val}-top: $breakpoint-val;
+                #{$pos-val}-bottom: $breakpoint-val;
+              } @else {
+                #{$pos-val}-#{$direction-val}: $breakpoint-val;
+              }
+            }
+          }
+        }
+      }
+  }
+}
+
+@each $pos-short, $pos in (p: padding, m: margin) {
+  @each $direction-short, $direction-val in (l: left, r: right, t: top, b: bottom, x: x, y: y) {
+  }
+}
+
+%bare {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}

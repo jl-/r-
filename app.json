@@ -1,0 +1,6 @@
+{
+  "name": "xixi-homeschool-web",
+  "description": "web project for xixi homeschool",
+  "image": "heroku/cedar:14",
+  "addons": []
+}

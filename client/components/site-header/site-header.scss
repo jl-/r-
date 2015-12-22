@@ -1,0 +1,32 @@
+@import '../../styles/configs/_exports';
+/*************     site-header config    ***********/
+$site-header_height:                  60px;
+$site-header_bgc:                     transparent !default;
+$site-header_color:                   grey !default;
+$site-header--dark_bgc:               $facebook-dark !default;
+$site-header--dark_color:             white !default;
+
+.site-header {
+    $base: #{&};
+    background: $site-header_bgc;
+    color: $site-header_color;
+    &__logo {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 16px;
+    }
+    &__nav-item {
+      @extend .inline-block;
+      @extend .link;
+      @extend .link--flat;
+    }
+    &--dark {
+      background-color: $site-header--dark_bgc;
+      #{$base}__nav-item {
+        color: $site-header--dark_color;
+        &:hover {
+          color: shade($site-header--dark_color, 20%);
+        }
+      }
+    }
+}

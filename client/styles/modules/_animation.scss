@@ -1,0 +1,108 @@
+@import 'styles/utils/timing-functions';
+@keyframes down {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(0,100%);
+  }
+}
+@keyframes up {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(0,-100%);
+  }
+}
+@keyframes down-reverse {
+  from {
+    transform: translate(0,100%);
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
+@keyframes up-reverse {
+  from {
+    transform: translate(0,-100%);
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
+@keyframes left {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(-100%,0);
+  }
+}
+@keyframes left-reverse {
+  from {
+    transform: translate(-100%,0);
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
+@keyframes right {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(100%,0);
+  }
+}
+@keyframes right-reverse {
+  from {
+    transform: translate(100%,0);
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes z-in {
+  0% {
+    transform: scale(2) translateZ(1000px);
+  }
+  100% {
+    transform: scale(1) translateZ(0);
+  }
+}
+@keyframes z-out {
+  0% {
+    transform: scale(1) translateZ(0);
+  }
+  100% {
+    transform: scale(0) translateZ(-1000px);
+  }
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

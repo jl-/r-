@@ -1,0 +1,9 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+.home {
+  compose-with: global(frow) global(f-ac-fs) global(f-jc-sa);
+  flex-grow: 1;
+  @include size(100%);
+}
+
+

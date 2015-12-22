@@ -1,0 +1,15 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+.communities {
+  @include size(100%);
+  compose-with: global(frow) global(f-ai-fs) global(f-jc-sa);
+}
+
+.vcard {
+  width: 30%;
+}
+
+.tweets {
+  @include size(60%, 100%);
+  compose-with: global(text--center);
+}

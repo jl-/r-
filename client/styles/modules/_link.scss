@@ -1,0 +1,13 @@
+@import 'styles/configs';
+@import 'styles/visual/position';
+.link {
+  @extend .p-x--md;
+  text-decoration: none;
+  color: $link_color;
+  &:hover {
+    color: $link_color--hovered;
+  }
+  &--flat {
+    font-size: 13px;
+  }
+}

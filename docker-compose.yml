@@ -1,0 +1,25 @@
+nginx:
+  build: ./setup/nginx
+  volumes:
+    - ./setup/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    - ./setup/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+    - ./dist:/var/web/statics:ro
+  ports:
+    - '80:80'
+  links:
+    - web
+
+web:
+  build: .
+  command: pm2 start web.json5 --no-daemon
+  volumes:
+    - .:/app/user:rw
+  expose:
+    - '9876'
+  links:
+    - redis
+
+redis:
+  build: ./setup/redis
+  expose:
+    - '6379'

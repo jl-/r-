@@ -1,0 +1,11 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+.card {
+  compose-with: global(fcol);
+  width: 40%;
+  height: 200px;
+  margin-top: 40px;
+  background-color: white;
+  border-radius: 4px;
+}
+

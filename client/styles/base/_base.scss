@@ -1,0 +1,26 @@
+@import 'styles/configs';
+/************ font-face  *************/
+@font-face {
+    font-family: "lth";
+    src: url("#{$ROOT}/statics/fonts/lth.ttf");
+}
+@font-face {
+  font-family: "bariol-regular";
+  src: url("#{$ROOT}/statics/fonts/bariol_regular/bariol-regular.eot");
+  src: url("#{$ROOT}/statics/fonts/bariol_regular/bariol-regular.eot?#iefix") format("embedded-opentype"), url("#{$ROOT}/statics/fonts/bariol_regular/bariol-regular.woff") format("woff"), url("#{$ROOT}/statics/fonts/bariol_regular/bariol-regular.ttf") format("truetype"), url("#{$ROOT}/statics/fonts/bariol_regular/bariol-regular.svg#bariol-regular") format("svg");
+}
+
+/***********  tags   **************/
+* {
+    box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  font-family:Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC","Hiragino Sans GB",Simsun,sans-self;
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+  font-weight: lighter;
+}

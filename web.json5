@@ -1,0 +1,28 @@
+{
+  apps: [{
+    name: 'homeschool-render-server',
+    script: 'server/entry.js',
+
+    //exec_interpreter: 'babel-node',
+    watch: ['server'],
+    watch_options: {
+      usePolling: true,
+      interval: 100,
+      binaryInterval: 300
+    },
+    ignore_watch: [
+      '[\\/\\\\]\\./',
+      'node_modules',
+      'statics',
+      'dist',
+      'server/logs',
+      'test',
+      '.git',
+      '.idea'
+    ],
+    error_file: 'server/logs/render-error.log',
+    out_file: 'server/logs/render-out.log',
+    merge_logs: true,
+    max_memory_restart: '2G'
+  }]
+}

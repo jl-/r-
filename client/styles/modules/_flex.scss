@@ -1,0 +1,55 @@
+@import 'styles/mixins/_flex.scss';
+/* =====================
+ * global flex classes, only use in html to overwrite default declarations
+ * ------------------------------
+ * .frow: block level flexbox with default rules.
+ * .f-jc-sb {
+ *   justify-content: space-between;
+ * }
+ * ......
+ * ========================================================*/
+// $selector, $display, $flex-direction
+$global-flex-def:
+  ('.frow', flex, row),
+  ('.fcol', flex, column),
+  ('.ifrow', inline-flex, row),
+  ('.ifcol', inline-flex, column);
+@each $selector, $level, $direction in $global-flex-def {
+  #{$selector} {
+    @include flex-box($level, $direction)
+  }
+}
+
+$flex-rule-vals-map: (
+  'fs': flex-start,
+  'fe': flex-end,
+  'c':  center,
+  'sb': space-between,
+  'sa': space-around,
+  'b': baseline,
+  's': stretch,
+  'w': wrap,
+  'nw': no-wrap,
+  'wr': wrap-reverse,
+  'a': auto
+);
+$flex-rules-map:
+  ('jc', justify-content, ('fs', 'fe', 'c', 'sb', 'sa')),
+  ('ai', align-items, ('fs', 'fe', 'c', 'b', 's')),
+  ('ac', align-content, ('fs', 'fe', 'c', 'sb', 'sa', 's')),
+  ('as', align-self, ('fs', 'fe', 'c', 'b', 's', 'a')),
+  ('fw', flex-wrap, ('w', 'nw', 'wr'));
+@each $rule-selector, $rule, $vals in $flex-rules-map {
+  @each $val in $vals {
+    .f-#{$rule-selector}-#{$val} {
+      #{$rule}: map-get($flex-rule-vals-map, $val);
+    }
+  }
+}
+
+// flex: n
+@for $i from 0 through 10{
+  .f-#{$i} {
+    @include flex-item($i);
+  }
+}

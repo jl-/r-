@@ -1,0 +1,5 @@
+@mixin color-variant($color: null, $background-color: null, $border-color: null) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+}

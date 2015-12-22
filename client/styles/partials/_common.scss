@@ -1,0 +1,14 @@
+.site-body {
+  min-height: 500px;
+}
+.loading-indicator,
+.empty-indicator {
+  display: none;
+  &--shown {
+    display: block;
+    color: grey;
+  }
+}
+.loading-indicator {
+  z-index: 10000;
+}

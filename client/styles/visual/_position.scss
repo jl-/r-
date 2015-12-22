@@ -1,0 +1,35 @@
+@import 'styles/configs';
+
+//
+@each $cls, $val in (rel: relative, abs: absolute, fixed: fixed) {
+  .#{$cls} {
+    position: $val;
+  }
+}
+@each $dir in (top, left, right, bottom) {
+  .abs, .fixed {
+    &--#{$dir} {
+      #{$dir}: 0;
+    }
+  }
+}
+.abs,
+.fixed {
+  &--xc {
+    @extend .m-x--o;
+    left: 0;
+    right: 0;
+  }
+  &--yc {
+    @extend .m-y--o;
+    top: 0;
+    bottom: 0;
+  }
+}
+.float--left{
+  float: left;
+}
+.float--right {
+  float: right;
+}
+

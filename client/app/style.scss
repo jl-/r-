@@ -1,0 +1,14 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/partials/common';
+@import 'styles/base/base';
+@import 'styles/visual';
+@import 'styles/modules';
+
+html, body, #react-app-container{
+  @include size(100%);
+}
+body {
+  background-color: $body_bgc;
+  color: $body_color;
+}

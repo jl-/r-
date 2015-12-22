@@ -1,0 +1,11 @@
+.cursor{
+  &--pointer {
+    cursor: pointer;
+  }
+  &--disabled {
+    cursor: not-allowed;
+  }
+  &--text {
+    cursor: text;
+  }
+}

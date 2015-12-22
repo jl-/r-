@@ -1,0 +1,48 @@
+stages:
+  - deploy
+
+before_script:
+  #  - "[[ $- == *i* ]] && echo 'Interactive' || echo 'Not interactive'"
+  #  - "shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'"
+  #  - echo $PATH
+  #  - echo $HOME
+  #  - echo $-
+
+  #  clean existed docker containers and <none> images
+  - sh ./scripts/clear-docker.sh
+  - heroku plugins:install heroku-docker
+  #  - nvm use default
+  #  `sudo chmod -R go+w /var/lib` fro `gem install` to work
+  - npm install
+  - bower install
+
+dev:
+  stage: deploy
+  script:
+    #- docker-compose --verbose run app ls -a
+    - gulp serve
+    - heroku docker:release --app xixi-web
+    #- gem install dpl
+    #- dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=xixi-web-dev
+  only:
+    - dev
+
+
+staging:
+  stage: deploy
+  script:
+    - heroku docker:release --app xixi-web
+    #- gem install dpl
+    #- dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=xixi-web
+  only:
+    - master
+
+
+production:
+  stage: deploy
+  script:
+    - heroku docker:release --app xixi-web
+    #- gem install dpl
+    #- dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=xixi-web
+  only:
+    - tags

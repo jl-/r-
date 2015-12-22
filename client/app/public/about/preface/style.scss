@@ -1,0 +1,121 @@
+@import 'styles/configs';
+@import 'styles/mixins';
+@import 'styles/utils';
+$dura: 1.2s !default;
+$easing: $ease-in-out-back !default;
+$fill: forwards !default;
+$delay: 0.2s !default;
+
+.preface {
+  @include size(100%);
+  :global(.slide--current) {
+    .animY {
+      :global {
+        $dura: 0.6s;
+        $easing: $ease-in-out-sine;
+        animation: up-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+      }
+    }
+    .animX {
+      :global {
+        $easing: $ease-in-out-sine;
+        animation: right-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+      }
+    }
+  }
+  :global(.slide--current-entering) {
+    .animX {
+      :global {
+        $easing: $ease-in-out-sine;
+        animation: right-reverse $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+      }
+    }
+  }
+  :global(.slide--prev-leaving) {
+    .animY {
+      :global {
+        $dura: 0.6s;
+        $easing: $ease-in-out-sine;
+        animation: up $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+      }
+    }
+    .animX {
+      :global {
+        $easing: $ease-in-out-sine;
+        animation: left $dura $easing $delay $fill, fade-in $dura $easing $delay $fill;
+      }
+    }
+  }
+  .animY {
+    :global {
+      //animation: up $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+  .animX {
+    :global {
+      //animation: right $dura $easing $fill, fade-out $dura $easing $fill;
+    }
+  }
+}
+.animX, .animY {
+  transition: all $dura ease;
+  opacity: 0;
+}
+.slide {
+  compose-with: global(text--center) global(fcol);
+  background-size: cover;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    z-index: -1;
+    background-color: rgba(0,0,0,0.7);
+  }
+}
+///// slide nav
+$dot-count: 3;
+$dot-dis: 0.4em;
+$dot_width: 1em;
+$dot_height: 1em;
+.dot {
+  compose-with: global(dib) global(float--left) global(cursor--pointer);
+  @include size($dot_width, $dot_height);
+  border-radius: 50%;
+  background-color: $body_color;
+  &.dotActived {
+    background-color: $brand--primary;
+  }
+  & + & {
+    margin-left: $dot-dis;
+  }
+}
+.slideNav {
+  compose-with: global(abs) global(abs--xc);
+  bottom: 4em;
+  @include size($dot-count * ($dot_width + $dot-dis) - $dot-dis, $dot_height);
+}
+
+.intro {
+  compose-with: slide;
+  color: #eee;
+  background-image: url(/statics/images/preface-intro.png);
+  &App {
+    compose-with: animY;
+    margin-top: 1em;
+    font-size: 3.6em;
+  }
+  &Slogan {
+    compose-with: animX global(m-y--sm);
+    font-size: 2.6em;
+  }
+}
+
+.spec {
+  compose-with: slide;
+  background-image: url(/statics/images/preface-spec.jpg);
+}
+
+.case {
+  compose-with: slide;
+  background-image: url(/statics/images/preface-case.jpg);
+}

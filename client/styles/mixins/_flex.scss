@@ -1,0 +1,39 @@
+/* =====================
+ * flex container('box' for short) & flex item
+ * ========================================================*/
+$flex-level: flex;
+$flex-direction: row;
+$flex-justify-content: flex-start;
+$flex-align-items: stretch;
+$flex-align-content: stretch;
+$flex-wrap: wrap;
+@mixin flex-box(
+  $level: $flex-level,
+  $direction: $flex-direction,
+  $justify-content: $flex-justify-content,
+  $align-items: $flex-align-items,
+  $align-content: $flex-align-content,
+  $wrap: $flex-wrap) {
+    display: $level;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    align-content: $align-content;
+    flex-wrap: $wrap;
+}
+
+// `flex` shorthand declarations with unitless `flex-basis` values are ignored
+@mixin flex-item(
+  $grow: null,
+  $shrink: null,
+  $basis: null) {
+    $arg-len: length($grow);
+    @if ($arg-len > 1) {
+      $basis: if($arg-len == 3, nth($grow, 3), $basis);
+      $shrink: nth($grow, 2);
+      $grow: nth($grow, 1);
+    }
+    flex-grow: $grow;
+    flex-shrink: $shrink;
+    flex-basis: $basis;
+}
